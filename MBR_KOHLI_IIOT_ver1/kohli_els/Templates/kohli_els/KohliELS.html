@@ -1,0 +1,504 @@
+{% load static %}
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIOT</title>
+    <link rel="stylesheet" href="{% static 'kohli_els/KohliELS.css' %}">
+    <link rel="stylesheet" href="{% static 'kohli_els/syncro.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="container">
+            <a class="Logo" href="#">E<span>LS</span></a>
+            <ul class="secondary-nav">
+                <li class="logout header-logout"><a href="/logout/">Logout</a></li>
+                <li><img class="im" src="{% static 'kohli_els/SACASL.jpeg' %}" alt="logo"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div style="display: flex;align-items: center;justify-content: space-between;">
+            <div class="dropdown">
+                <button class="dropbtn">Machine 1</button>
+                <div class="dropdown-content">
+                    <a href="#">Machine 2</a>
+                    <a href="#">Machine 3</a>
+                    <a href="#">Machine 4</a>
+                    <a href="#">Machine 5</a>
+                    <a href="#">Machine 6</a>
+                    <a href="#">Machine 7</a>
+                    <a href="#">Machine 8</a>
+                    <a href="#">Machine 9</a>
+                    <a href="#">Machine 10</a>
+                </div>
+            </div>
+            <div class="body-logout"><a href="/logout/">Logout</a></div>
+        </div>
+
+        <div class="main-row">
+            <div class="container1 section1-sub1" style="">
+                <div class="stateblock">
+                    <div class="statespeed">
+                        <h3 class="statehead">STATE</h3>
+                        <div class="indicators">
+                            <input type="button" id="mstate" class="machine1" value="M/C1">
+                            <div>
+                                <p class="mstop">STOP</p>
+                                <p class="mstart">RUNNING</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="statespeed1">
+                        <h3 class="statehead">SPEED</h3>
+                        <div class="indicators1">
+                            <input type="number" id="speed1" class="mspeed" disabled value="0">
+                        </div>
+                    </div>
+                </div>
+                <div class="stateblock1">
+                    <div class="line-chart-block block">
+                        <h2 class="titular">Machine Speed Graph</h2>
+                        <div class="line-chart">
+                            <canvas id="myChart1" style="width:100%;max-width:600px"></canvas>
+                            <div class='grafico'>
+                                <ul class='axis-y'>
+                                    <li data-ejeY='500'></li>
+                                    <li data-ejeY='400'></li>
+                                    <li data-ejeY='300'></li>
+                                    <li data-ejeY='200'></li>
+                                    <li data-ejeY='100'></li>
+                                    <li data-ejeY='50'></li>
+                                    <li data-ejeY='0'></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container1 section1-sub2" style="">
+                <div class="stateblock1">
+                    <div class="donut-chart">
+                        <h2 class="titular">OCCURRENCE</h2>
+                        <canvas id="graph"></canvas>
+
+                    </div>
+                    <div class="notations">
+                        <ul class="notation horizontal-list">
+                            <li>
+                                <p class="nstop">STOP</p>
+                                <p id="stop" class="notation1">2</p>
+                            </li>
+                            <li>
+                                <p class="nemergency">EMERGENCY</p>
+                                <p id="eme" class="notation2">3</p>
+                            </li>
+                            <li>
+                                <p class="nbreakdown">BREAKDOWN</p>
+                                <p id="break" class="notation3">5</p>
+                            </li>
+                            <li>
+                                <p class="npowergone">POWERGONE</p>
+                                <p id="power" class="notation4">1</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="container1 section1-sub3" style="">
+                <div class="stateblock1">
+                    <div class="time-graph">
+                        <h2 class="titular" style="margin-left: 54px;">Machine State Time</h2>
+                        <canvas id="myChart" style="width:100%;max-width:400px;height: 500px;margin-left: 50px;"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container1 section1-sub4" style="">
+                <div class="stateblock1">
+                    <div class="preventive-block">
+                        <h3 class="prevhead">PREVENTIVE MAINTENANCE <span>STATICS</span></h3>
+                        <div class="sethrs">
+                            <h2 class="sethead">Set Hours</h2>
+                            <ul class="os-percentages5 horizontal-list5">
+                                <li>
+                                    <p id="setHours1" class="sthrs">3000</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <h2 class="curhead">Current Hours</h2>
+                        <ul class="os-percentages6 horizontal-list6">
+                            <li>
+                                <p id="CurHours" class="crnthrs">100</p>
+                            </li>
+                        </ul>
+
+                        <h2 class="remhead">Remaining Hours</h2>
+                        <ul class="os-percentages7 horizontal-list7">
+                            <li>
+                                <p id="RemHours" class="rmnhrs">2900</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="stateblock1">
+                    <div class="preventive-block">
+                        <h3 class="prevhead">Motor Running Hours</h3>
+                        <div class="sethrs">
+                            <ul class="os-percentages5 horizontal-list5">
+                                <li>
+                                    <p id="setHours" class="sthrs">30Hrs</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-row">
+            <div class="container1 average section2-sub1" style="">
+                <div class="stateblock1">
+                    <div class="preventive-block">
+                        <h3 class="prevhead">Average Speed</h3>
+                        <div class="sethrs">
+                            <ul class="os-percentages5 horizontal-list5">
+                                <li>
+                                    <p class="avgspeed">200.0m/m</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="stateblock1">
+                    <div class="preventive-block">
+                        <h3 class="prevhead">Machine Running Time</h3>
+                        <div class="sethrs">
+                            <ul class="os-percentages5 horizontal-list5">
+                                <li>
+                                    <p id="mrtime1" class="actruntime">296Hrs</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="stateblock1">
+                    <div class="preventive-block">
+                        <h3 class="prevhead">Machine STOP Time</h3>
+                        <div class="sethrs">
+                            <ul class="os-percentages5 horizontal-list5">
+                                <li>
+                                    <p id="mstime1" class="actstoptime">20Hrs</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container1 section2-sub2" style="">
+                <div class="actualpr">
+                    <div style="padding: 50px; width: 100%; margin: auto;">
+                        <div data-stepped-bar=''>
+                        </div>
+                    </div>
+                    <script src="{% static 'kohli_els/syncro.js' %}"></script>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-row">
+            <div class="container1 average section3-sub1" style="">
+                <div class="stateblock1">
+                    <div class="preventive-block">
+                        <h3 class="prevhead">TARGET KM</h3>
+                        <div class="sethrs">
+                            <ul class="os-percentages5 horizontal-list5">
+                                <li>
+                                    <p class="avgspeed">200KM</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="stateblock1">
+                    <div class="preventive-block">
+                        <h3 class="prevhead">ACTUAL KM</h3>
+                        <div class="sethrs">
+                            <ul class="os-percentages5 horizontal-list5">
+                                <li>
+                                    <p id="mrtime" class="actruntime">10KM</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="stateblock1">
+                    <div class="preventive-block">
+                        <h3 class="prevhead">ACHIEVED</h3>
+                        <div class="sethrs">
+                            <ul class="os-percentages5 horizontal-list5">
+                                <li>
+                                    <p id="mstime" class="actstoptime">20%</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    data_url = "/index"
+    async function getData() {
+        const response = await fetch(data_url);
+        const data = await response.json();
+        const {
+            ACTUAL_SPEED,
+            MACHINE_AUTO_MODE
+        } = data;
+        document.getElementById('speed1').value = ACTUAL_SPEED;
+
+        if (MACHINE_AUTO_MODE == 0) {
+                document.getElementById('mstate').style.backgroundColor = 'red';
+            } else {
+                document.getElementById('mstate').style.backgroundColor = 'green';
+            }
+    }
+
+    setInterval(getData, 1000);
+</script>
+
+<script>
+    const xaxe = [06, 07, 08, 09, 10, 11, 12, 13, 14,15, 16, 17, 18, 19, 20, 21, 22,23,24];
+    const yaxe = [];
+    var speed = [];
+
+    const data2 = {
+             labels: xaxe,
+             datasets: [{
+                   fill: false,
+                   lineTension: 0,
+                   backgroundColor: "yellow",
+                   borderColor: "yellow",
+                   data: yaxe
+             }]
+    };
+
+    const config2 = {
+                type: "line",
+                data: data2,
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                min: 0,
+                                max: 24
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                min: 0,
+                                max: 500
+                            }
+                        }],
+                    }
+                }
+    };
+
+    const ctx2 = document.getElementById('myChart1');
+    const myChart2 = new Chart(ctx2, config2);
+
+    async function getData2() {
+            const response = await fetch(data_url);
+            const data = await response.json();
+            const {
+                ACTUAL_SPEED,
+            } = data;
+
+            speed = parseInt(data.ACTUAL_SPEED);
+            console.log(speed);
+            updatelinechart();
+
+    }
+
+    function updatelinechart() {
+        yaxe.push(speed);
+        myChart2.update();
+
+    }
+
+    setInterval(getData2,10000);
+
+
+</script>
+
+
+<script>
+    data_url = "/index"
+    var st = [];
+    var em = [];
+    var bd = [];
+    var pg = [];
+    var yval = [];
+
+
+    const data1 = {
+            labels: ['STOP', 'EMERGENCY','BREAKDOWN','POWERGONE'],
+            datasets: [{
+              label: '',
+              data: [],
+              backgroundColor: [
+                '#e64c65',
+                '#11a8ab',
+                '#fcb150',
+                'maroon'
+              ],
+              borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
+              ],
+              borderWidth: 1
+            }]
+    };
+    const config1 = {
+          type: 'doughnut',
+          data: data1,
+          options: {
+            cutoutPercentage: 70,
+            responsive: false,
+
+          }
+    };
+
+    const ctx1 = document.getElementById("graph");
+    const myChart1 = new Chart(ctx1, config1);
+
+    async function getData1() {
+            const response = await fetch(data_url);
+            const data = await response.json();
+            const {
+                MACHINE_STANDBY,
+                MACHINE_ESTOP,
+                BREAKDOWN,
+                POWERGONE,
+            } = data;
+            document.getElementById('stop').textContent = MACHINE_STANDBY;
+            document.getElementById('eme').textContent = MACHINE_ESTOP;
+            st = parseInt(data.STOP);
+            em = parseInt(data.EMERGENCY);
+            bd = parseInt(data.BREAKDOWN);
+            pg = parseInt(data.POWERGONE);
+            updatechart();
+
+    }
+
+    function updatechart() {
+        myChart1.data.datasets[0].data[0] = st;
+        myChart1.data.datasets[0].data[1] = em;
+        myChart1.data.datasets[0].data[2] = bd;
+        myChart1.data.datasets[0].data[3] = pg;
+        myChart1.update();
+
+
+    }
+
+    setInterval(getData1,1000);
+
+</script>
+
+<script>
+    data_url = "/index"
+    var yValues = [];
+    var RUNTIME = [];
+    var STOPTIME = [];
+    var IDLETIME = [];
+    var JCOTIME = [];
+    const data = {
+                labels: ['START', 'STOP', 'IDLE', 'JCO'],
+                datasets: [{
+                    data: yValues,
+                    backgroundColor: [
+                        "#FF7F50",
+                        "#DC143C",
+                        "#DC143C",
+                        "#FFFF00"
+                    ],
+
+                }]
+    };
+    const config = {
+            type: 'bar',
+            data,
+            options: {
+                legend: {
+                display: false
+            },
+                animation: false,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+
+                    }]
+                }
+            }
+    };
+
+    const ctx = document.getElementById('myChart');
+    const myChart = new Chart(ctx, config);
+
+
+     async function getData() {
+            const response = await fetch(data_url);
+            const data = await response.json();
+            const {
+                TOTAL_MACHINE_RUN_TIME,
+                TOTAL_MACHINE_TIME,
+                MACHINE_MANUAL_MODE,
+                MACHINE_STANDBY
+
+            } = data;
+            RUNTIME = parseInt(data.TOTAL_MACHINE_RUN_TIME);
+            STOPTIME = parseInt(data.TOTAL_MACHINE_TIME);
+            IDLETIME = parseInt(data.MACHINE_MANUAL_MODE);
+            JCOTIME = parseInt(data.MACHINE_STANDBY);
+            updateval();
+
+     }
+
+     function updateval() {
+        let oldvalues = yValues.splice(0,3);
+        yValues.push(RUNTIME,STOPTIME,IDLETIME);
+        myChart.update();
+
+     }
+      setInterval(getData,1000);
+
+</script>
+
+
+</html>

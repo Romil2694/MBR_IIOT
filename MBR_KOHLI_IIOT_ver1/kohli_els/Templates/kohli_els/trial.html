@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="number" id="speed1" class="mspeed" disabled value="0">
+
+</body>
+<script>
+    data_url = "/index/"
+    async function getData() {
+        const response = await fetch(data_url);
+        const data = await response.json();
+        const {
+            ACTUAL_SPEED
+        } = data;
+        document.getElementById('speed1').value = ACTUAL_SPEED;
+    }
+
+    setInterval(getData, 1000);
+</script>
+
+</html>
